@@ -92,4 +92,4 @@ figure {
     top: 1.25rem;
     right: 1.25rem;
 }
-.description {height: 170px}
+.description {height: 170px !important}
