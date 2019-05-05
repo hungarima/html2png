@@ -17,11 +17,11 @@
 
 <body ng-app="MyChildApp" ng-controller="MyChildController">
     <div class="container-fluid">
-        <div class="row mb-3">
+<!--         <div class="row mb-3">
             <div class="col-md-12">
                 <button name="downloadimage" id="downloadImage" class="btn btn-primary">Download</button>
             </div>
-        </div>
+        </div> -->
         <div class="row">
             <div class="col-md-12" id="result" class="mb-3">
                 <div id="capture" class="card" style="width: 1200px;height: 1200px;">
@@ -70,7 +70,7 @@
         });
     </script>
     <script>
-        $('#downloadImage').click(function () {
+        setTimeout(() => {
             html2canvas(document.querySelector("#capture"), {
                 letterRendering: 1,
                 allowTaint: true,
@@ -78,22 +78,8 @@
             }).then(canvas => {
                 $('#capture').hide();
                 $('#result').append(canvas);
-                saveAs(canvas.toDataURL(), 'news.png');
             });
-        })
-
-        function saveAs(uri, filename) {
-            var link = document.createElement('a');
-            if (typeof link.download === 'string') {
-                link.href = uri;
-                link.download = filename;
-                document.body.append(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                window.open(uri);
-            }
-        }
+        }, 1000);
     </script>
 </body>
 
